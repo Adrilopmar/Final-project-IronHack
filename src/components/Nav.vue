@@ -1,13 +1,30 @@
 <template>
-<div class="bg-nav flex">
-    <div class="img-logo">
-    <img src="/src/assets/images/p't-logo.png" alt="">
+    <div class="bg-nav flex justify-between">
+        <div class="img-logo">
+        <img @click="this.conse()" src="/src/assets/images/p't-logo.png" alt="">
+        </div>
+        <button @click="signOut">Log out</button>
     </div>
-</div>
   
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
+import {useUserStore} from '../stores/user'
+import { useRouter } from "vue-router";
+
+const redirect = useRouter();
+const userStore= useUserStore()
+const user = useUserStore().user
+const signOut = (()=>{
+    userStore.logOut()
+    redirect.push({path: '/auth/login'})
+})
+const conse = ()=>{
+    console.log(user)
+    console.log(logged)
+}
+
 //constant to save a variable that will hold the use router method
 
 // constant to save a variable that will get the user from store with a computed function imported from vue

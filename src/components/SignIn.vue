@@ -1,6 +1,7 @@
 <template>
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
+  taralexy@hotmail.com - zxcvbnm
   <form class="w-full max-w-sm">
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
@@ -9,7 +10,8 @@
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" id="inline-full-name" type="text" value="example@mail.com">
+      <input v-model="this.email"
+      class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" id="inline-full-name" type="text" placeholder="example@mail.com">
     </div>
   </div>
   <div class="md:flex md:items-center mb-6">
@@ -19,25 +21,28 @@
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************">
+      <input v-model="this.password"
+      class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************">
     </div>
   </div>
+  <!-- button to sign in the app -->
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3"></div>
+    <div class="md:w-2/3">
+      <button @click="signIn"
+      class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+        Sign in
+      </button>
+    </div>
+  </div>
+  <!-- element to register an account -->
+  <div class="md:flex md:items-center ">
+    <div class="md:w-1/3"></div>
     <label class="md:w-2/3 block text-gray-500 font-bold">
-      
       <span class="text-sm">Not having an account yet?</span>
       <br>
       <span class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" /></span>
     </label>
-  </div>
-  <div class="md:flex md:items-center">
-    <div class="md:w-1/3"></div>
-    <div class="md:w-2/3">
-      <button class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-        Sign Up
-      </button>
-    </div>
   </div>
 </form>
 </div>
