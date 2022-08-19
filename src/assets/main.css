@@ -1,13 +1,24 @@
 /* @import "./base.css"; */
-body{
-  background-color: #eaeaea;
+:root{
+  --main-bg-color: #eaeaea;
+  --main-txt-color:#0C1713;
 }
-
+body{
+  background-color: var(--main-bg-color);
+  height: 100%;
+}
+html{
+  height: 100%;
+}
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
   /* padding: 2rem; */
   font-weight: normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
 }
 
 a,

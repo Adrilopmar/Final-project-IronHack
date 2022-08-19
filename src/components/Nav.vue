@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="bg-nav flex">
     <div class="img-logo">
     <img src="/src/assets/images/p't-logo.png" alt="">
     </div>
@@ -20,10 +20,9 @@
 </script>
 
 <style scoped>
-.container{
+.bg-nav{
     background: #f8f8f8;
     padding: 1.5rem 3rem;
-    width: 100%;
 }
 .img-logo{
     width: 125px;

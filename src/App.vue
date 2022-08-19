@@ -30,9 +30,13 @@ onMounted(async () => {
 
 <template>
   <Nav/>
-  <div class="prova">
+  
     <router-view />
-  </div>
+ 
 </template>
 
-<style  src="../src/assets/tailwind.css"></style>
+<style  src="../src/assets/tailwind.css">
+.prova{
+  height: 100%;
+}
+</style>
