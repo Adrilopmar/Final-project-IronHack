@@ -42,8 +42,11 @@ npm run build
 
 ### Headway
 
-##### Aug 18 2022
+#### Aug 18 2022
 Fixed styles and added tailwind, styling and responsiveness will be easier.
 thought about the palette too. It may change a bit, but already got the basics colors.
 
 Now it is time to focus on Log in the app. Sign in and Sign up components plus its js and logic
+
+#### Aug 19 2022
+Sign in & sign up components done with basics styles which will change in a near future. 
