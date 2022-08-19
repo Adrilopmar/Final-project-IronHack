@@ -1,4 +1,5 @@
 <script setup>
+import Nav from './components/Nav.vue'
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
@@ -28,9 +29,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
+  <Nav/>
+  <div class="prova">
     <router-view />
   </div>
 </template>
 
-<style></style>
+<style  src="../src/assets/tailwind.css"></style>

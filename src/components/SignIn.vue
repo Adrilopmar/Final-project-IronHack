@@ -1,8 +1,6 @@
 <template>
   <div>Sign In</div>
   <PersonalRouter :route="route" :buttonText="buttonText" />
-  <p>Time to build up the Final Project!</p>
-  <p class="wu-text">Wu Tang Forever</p>
 </template>
 
 <script setup>
@@ -51,7 +49,7 @@ const signIn = async () => {
 };
 </script>
 
-<style>
+<style socped>
 .wu-text {
   color: black;
 }
