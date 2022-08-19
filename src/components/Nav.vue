@@ -1,5 +1,10 @@
 <template>
-  <div>Nav Component</div>
+<div class="container">
+    <div class="img-logo">
+    <img src="/src/assets/images/p't-logo.png" alt="">
+    </div>
+</div>
+  
 </template>
 
 <script setup>
@@ -14,4 +19,16 @@
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 </script>
 
-<style></style>
+<style scoped>
+.container{
+    background: #f8f8f8;
+    padding: 1.5rem 3rem;
+    width: 100%;
+}
+.img-logo{
+    width: 125px;
+}
+img{
+    height: 40px;
+}
+</style>
