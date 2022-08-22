@@ -50,3 +50,6 @@ Now it is time to focus on Log in the app. Sign in and Sign up components plus i
 
 #### Aug 19 2022
 Sign in & sign up components done with basics styles which will change in a near future. 
+
+#### Aug 22 2022
+Created a modal window to create a new task 
