@@ -1,7 +1,12 @@
 /* @import "./base.css"; */
 :root{
   --main-bg-color: #eaeaea;
+  --white-bg-color: #f8f8f8;
   --main-txt-color:#0C1713;
+  --button-primary: #7ba8e0;
+  --button-primary-hover: #a4c7f3;
+  --button-secondary: #d3d7dc;
+  
 }
 body{
   background-color: var(--main-bg-color);

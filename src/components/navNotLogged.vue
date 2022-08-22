@@ -10,11 +10,12 @@
 
 <style scoped>
 .bg-nav{
-    background: #f8f8f8;
+    background:var(--white-bg-color);
     padding: 1.5rem 3rem;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 .img-logo{
-    width: 125px;
+    width: 310px;
 }
 img{
     height: 40px;

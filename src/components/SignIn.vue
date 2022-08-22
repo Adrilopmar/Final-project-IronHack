@@ -30,7 +30,7 @@
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3"></div>
     <div class="md:w-2/3">
-      <button @click="signIn"
+      <button @click="signIn" v-wave
       class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
         Sign in
       </button>
@@ -42,7 +42,7 @@
     <label class="md:w-2/3 block text-gray-500 font-bold">
       <span class="text-sm">Not having an account yet?</span>
       <br>
-      <span class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" /></span>
+      <span  class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" /></span>
     </label>
   </div>
 </form>
@@ -96,21 +96,11 @@ const signIn = async () => {
 };
 </script>
 
-<style socped>
+<style scoped>
 .sign-in-bg{
   padding: 3rem;
   border-radius: 25px;
   background: #add2ff;
   
-}
-.button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
 </style>

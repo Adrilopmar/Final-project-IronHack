@@ -3,7 +3,7 @@
         <div class="img-logo">
         <img src="/src/assets/images/p't-full-logo.png" alt="">
         </div>
-        <button @click="signOut">Log out</button>
+        <button v-wave="{color:'red'}" @click="signOut">Log out</button>
     </div>
 </template>
 
@@ -37,8 +37,9 @@ const conse = ()=>{
 
 <style scoped>
 .bg-nav{
-    background: #f8f8f8;
+    background:var(--white-bg-color);
     padding: 1.5rem 3rem;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 .img-logo{
     width: 310px;
@@ -49,7 +50,7 @@ img{
 button{
     border-radius: 7px;
     padding: 7px 15px;
-    background:#d3d7dc ;
+    background:var(--button-secondary);
 }
 button:hover{
     background: #f941448e;
