@@ -1,4 +1,5 @@
 <template>
+<navNotLogged/>
   <div class="sign-up-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Register</h3>
   <form  class="w-full max-w-sm">
@@ -79,6 +80,7 @@
 </template>
 
 <script setup>
+import navNotLogged from './navNotLogged.vue'
 import {useUserStore} from '../stores/user'
 import PersonalRouter from "./PersonalRouter.vue";
 import {ref}from 'vue'

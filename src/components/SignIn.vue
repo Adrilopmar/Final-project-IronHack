@@ -1,4 +1,5 @@
 <template>
+<navNotLogged/>
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
   taralexy@hotmail.com - zxcvbnm
@@ -55,6 +56,7 @@ import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
+import navNotLogged from './navNotLogged.vue'
 
 // Route Variables
 const route = "/auth/sign-up";
@@ -100,13 +102,6 @@ const signIn = async () => {
   border-radius: 25px;
   background: #add2ff;
   
-}
-
-
-form {
-
- 
-
 }
 .button {
   background-color: #4caf50; /* Green */
