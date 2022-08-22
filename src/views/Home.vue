@@ -1,62 +1,81 @@
 <template>
-  <Nav/>
-  <div class="container"> 
-      <p class="text-center mt-12 mb-6"><i>Not tasks to do... yet. Are you procrastinating even writing the tasks down? </i> </p>
+  <Nav />
+  <div class="container">
+    <p v-if="userTasks.length < 1" class="text-center mt-12">
+      <i
+        >Not tasks to do... yet. Are you procrastinating even writing the tasks
+        down?</i
+      >
+    </p>
   </div>
-      <button v-wave @click="modalActive=true">Create new task</button>
+  <div class="mt-6 mx-auto mt-12">
+    <button v-wave @click="modalActive = true">Create new task</button>
+  </div>
   <div class="separating"></div>
-  <modal @close="close"
-  :modalActive="modalActive"/>
+  <modal @close="close" :modalActive="modalActive" />
+  <div v-for="(task) in userTasks" :key="task.id">
+    <taskDashboard :task="(task)" />
+  </div>
+  <button @click="conse">conse</button>
 </template>
 
 <script setup>
 import Nav from "../components/Nav.vue";
-import{useTaskStore} from '../stores/task'
-import modal from '../components/newTaskModal.vue'
-import { ref } from 'vue'
-
+import { useTaskStore } from "../stores/task";
+import modal from "../components/newTaskModal.vue";
+import { computed, ref } from "vue";
+import taskDashboard from "../components/taskDashboard.vue";
 const taskStore = useTaskStore();
+let modalActive = ref(false);
 
-let modalActive= ref(false)
+const userTasks = ref([]);
 
-const close = ()=>{
-  modalActive.value = !modalActive.value
-}
-const conse=  (()=>{
+const fetchedTasks = async () => {
+  userTasks.value = await taskStore.fetchTasks();
+};
 
-})
-const emit = defineEmits(['closeModal',false])
+const conse = () => {
+  console.log(userTasks.value);
+};
+
+const close = () => {
+  modalActive.value = !modalActive.value;
+  fetchedTasks()
+};
+
+const emit = defineEmits(["closeModal", false]);
 const prop = defineProps({
-  modal:Boolean
-  })
+  modal: Boolean,
+  tasks: Object,
+});
 
-
-
+computed(fetchedTasks());
 </script>
 
 <style scoped>
-.container{
+.container {
   color: var(--main-txt-color);
 }
 
-button{
+button {
   color: white;
   text-align: center;
   margin: 10px auto;
   border-radius: 7px;
-    padding: 7px 15px;
-    background: var(--button-primary) ;
+  padding: 7px 15px;
+  background: var(--button-primary);
 }
-button:hover{
+button:hover {
   color: var(--main-text-color);
-  transition: .5s;
-  background: var(--button-primary-hover)
+  transition: 0.5s;
+  background: var(--button-primary-hover);
 }
-.separating{
+.separating {
   margin: 25px auto;
   width: 60%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.521);
-}</style>
+}
+</style>
 
 <!-- 
 **Hints**

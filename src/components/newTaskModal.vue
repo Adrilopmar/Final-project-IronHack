@@ -100,7 +100,7 @@ const prop = defineProps({
     modalActive:Boolean
 })
 const emit = defineEmits([
-    'close',false
+    'close',false,
 ])
 
 </script>
