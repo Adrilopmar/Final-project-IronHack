@@ -10,7 +10,7 @@
       <div v-else class="mb-5 mt-5"> 
         <!-- <label for="task-name">New task name</label> -->
         <input
-          v-model="newTaskName"
+          v-model="taskName"
           type="text"
           name="task-name"
           :placeholder="taskName"
@@ -24,15 +24,14 @@
           v-show="edit"
           type="text"
           name="task-description"
-          v-model="newTaskDescription"
-          :placeholder="taskDescription"
+          v-model="taskDescription"
           class="appearance-none  border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         ></textarea>
       </div>
       <div>
         <button
           v-show="edit"
-          @click="updateTask(newTaskName, newTaskDescription, taskId)"
+          @click="updateTask(taskName, taskDescription, taskId)"
         >
           Ok
         </button>
@@ -46,11 +45,10 @@
       >
         edit
       </button>
-      <button
+      <button @click="deleteTask(taskId)"
         v-wave="{ color: 'black' }"
-        class="button bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded"
-      >
-        delete
+        class="button bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
+            delete
       </button>
       <button
         v-wave="{ color: 'black' }"
@@ -69,8 +67,6 @@ import { useTaskStore } from "../stores/task";
 
 const taskStore = useTaskStore();
 const edit = ref(false);
-const newTaskName = ref("");
-const newTaskDescription = ref("");
 const editTask = (id) => {
   console.log(id);
   edit.value = !edit.value;
@@ -80,13 +76,17 @@ const updateTask = async (name, description, id) => {
   emit("edit");
   edit.value = !edit.value;
 };
+const deleteTask = async (id)=>{
+    await taskStore.deleteTask(id);
+    emit('delete')
+}
 
 const props = defineProps({
   taskName: String,
   taskDescription: String,
   taskId: Number,
 });
-const emit = defineEmits(["edit"]);
+const emit = defineEmits(["edit","delete"]);
 </script>
 
 <style scoped>

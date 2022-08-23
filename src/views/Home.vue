@@ -15,7 +15,7 @@
   <modal @close="close" :modalActive="modalActive" />
   <div class="flex gap-5 flex-wrap" >
   <!-- <div v-for="task in userTasks" :key="task.id"> -->
-    <taskDashboard @edit="fetchedTasks" :tasks="userTasks" />
+    <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks()" :tasks="userTasks" />
   </div>
   <button @click="conse">conse</button>
 </template>
