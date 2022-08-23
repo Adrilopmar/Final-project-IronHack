@@ -42,5 +42,13 @@ export const useTaskStore = defineStore("tasks", {
       .delete()
       .match({ id: id })
     },
+    async isDone(done,id){
+      const { data, error } = await supabase
+      .from('tasks')
+      .update({ 
+        is_complete: done
+         })
+      .match({ id: id })
+    },
   }
 });

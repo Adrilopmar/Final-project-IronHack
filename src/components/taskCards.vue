@@ -1,19 +1,21 @@
 <template>
-  <div
-    class="card-task w-96 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col"
+
+  <div 
+    class="card-task w-96 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9"
   >
-  <div class="w-full"> </div>
-    <div class="mb-8">
-      <h3 v-if="!edit" class="text-gray-900 font-bold text-xl mb-2">
+  <div class="  ml-auto" :class="taskDone ?  'task-done':'task-not-done' "></div>
+  <div>
+<div class="mb-8 h-full flex flex-col">
+      <h3 id="taskName" v-if="!edit" class="text-gray-900 font-bold text-xl mb-2">
         {{ taskName }}
       </h3>
-      <div v-else class="mb-5 mt-5"> 
+      <div v-else class="mb-5"> 
         <!-- <label for="task-name">New task name</label> -->
-        <input
-          v-model="taskName"
+        <input id="inputName"
+        v-model="taskName"
+        
           type="text"
           name="task-name"
-          :placeholder="taskName"
           class="appearance-none border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         />
       </div>
@@ -28,34 +30,50 @@
           class="appearance-none  border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         ></textarea>
       </div>
-      <div>
-        <button
+    </div>
+  </div>
+    
+    <div class="flex justify-end align-bottom">
+        
+        <!-- <button v-wave="{color:'black'}"
+        class=" bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded"
+          v-show="edit"
+          @click="editingTask"
+        >
+          cancel
+        </button> -->
+        <button v-wave="{color:'black'}"
+        class=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
           v-show="edit"
           @click="updateTask(taskName, taskDescription, taskId)"
         >
-          Ok
+          Confirm
         </button>
       </div>
-    </div>
-    <div v-if="!edit" class="buttons flex justify-around align-bottom">
+    <div v-if="!edit" class=" flex justify-between align-bottom">
       <button
         v-wave="{ color: 'black' }"
-        class="button bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded"
-        @click="editTask(taskId)"
+        class=" bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded"
+        @click="editTask"
       >
         edit
       </button>
       <button @click="deleteTask(taskId)"
         v-wave="{ color: 'black' }"
-        class="button bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
+        class=" bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
             delete
       </button>
-      <button
+      <button v-if="!taskDone" @click="isTaskDone(!taskDone,taskId)"
         v-wave="{ color: 'black' }"
-        class="button bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded"
+        class=" bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded"
       >
         done!
       </button>
+      <button v-else @click="isTaskDone(!taskDone,taskId)"
+        v-wave="{ color: 'black' }"
+        class=" bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded"
+      >
+        still to be done </button>
     </div>
   </div>
   <div></div>
@@ -67,35 +85,71 @@ import { useTaskStore } from "../stores/task";
 
 const taskStore = useTaskStore();
 const edit = ref(false);
-const editTask = (id) => {
-  console.log(id);
+const editTask = () => {
+
   edit.value = !edit.value;
 };
 const updateTask = async (name, description, id) => {
   await taskStore.editTask(name, description, id);
   emit("edit");
-  edit.value = !edit.value;
+  editingTask()
+};
+const editingTask= ()=>{
+
+        // taskDescription=editingDescription.value
+    edit.value = !edit.value;
+
 };
 const deleteTask = async (id)=>{
     await taskStore.deleteTask(id);
     emit('delete')
+};
+const isTaskDone = async (isDone,id)=>{
+    console.log(isDone)
+    await  taskStore.isDone(isDone,id)
+    emit('done')
 }
-
 const props = defineProps({
   taskName: String,
   taskDescription: String,
   taskId: Number,
+  taskDone:Boolean,
 });
-const emit = defineEmits(["edit","delete"]);
+const emit = defineEmits(["edit","delete",'done']);
 </script>
 
 <style scoped>
 .card-task {
+    position: relative;
   min-height: 250px;
   background: #fff740;
+  /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 input,textarea {
     background: #ffffff8c;
+}
+
+.task-done{
+    top: 0;
+    right: 0;
+    position:absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 60px 60px 0;
+    border-color: transparent #0dff00 transparent transparent;
+}
+.task-not-done{
+    top: 0;
+    right: 0;   
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 60px 60px 0;
+    border-color: transparent #ff4800 transparent transparent;
+    
 }
 </style>
 
