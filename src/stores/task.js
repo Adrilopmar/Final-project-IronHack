@@ -27,5 +27,14 @@ export const useTaskStore = defineStore("tasks", {
         },
       ]);
     },
+    async editTask(title,description,id){
+      const { data, error } = await supabase
+      .from('tasks')
+      .update({ 
+        title: title,
+        description: description
+         })
+      .match({ id: id })
+    }
   },
 });

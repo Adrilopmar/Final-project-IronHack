@@ -1,12 +1,26 @@
 <template>
-  <p>{{task.title}}- {{task.description}}</p>
+    <div  v-for="task in tasks" :key="task.id" class="justify-around m-auto">
+      <taskCards @edit="$emit('edit')" :taskName="task.title" :taskId="task.id" :taskDescription="task.description"/>
+    </div>
 </template>
 
 <script setup>
+import taskCards from './taskCards.vue'
 
+const conse = ()=>{
+  console.log(tasks)
+}
+const emit = defineEmits([
+  'edit'
+])
 const props = defineProps({
-    task:Object
+    tasks:Object,
 })
+const editTask = async ()=>{
+  console.log('asdas',id)
+
+  
+}
 </script>
 
 <style>

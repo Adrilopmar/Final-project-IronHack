@@ -13,8 +13,9 @@
   </div>
   <div class="separating"></div>
   <modal @close="close" :modalActive="modalActive" />
-  <div v-for="(task) in userTasks" :key="task.id">
-    <taskDashboard :task="(task)" />
+  <div class="flex gap-5 flex-wrap" >
+  <!-- <div v-for="task in userTasks" :key="task.id"> -->
+    <taskDashboard @edit="fetchedTasks" :tasks="userTasks" />
   </div>
   <button @click="conse">conse</button>
 </template>
@@ -35,12 +36,12 @@ const fetchedTasks = async () => {
 };
 
 const conse = () => {
-  console.log(userTasks.value);
+  console.log('hi from 2 lvl emit home comp');
 };
 
 const close = () => {
   modalActive.value = !modalActive.value;
-  fetchedTasks()
+  fetchedTasks();
 };
 
 const emit = defineEmits(["closeModal", false]);
@@ -48,6 +49,7 @@ const prop = defineProps({
   modal: Boolean,
   tasks: Object,
 });
+
 
 computed(fetchedTasks());
 </script>
