@@ -4,6 +4,7 @@ import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
+import Footer from './components/Footer.vue'
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -29,11 +30,10 @@ onMounted(async () => {
 
 <template>
  <router-view />
+ <Footer class="" />
  
 </template>
 
 <style  src="../src/assets/tailwind.css">
-.prova{
-  height: 100%;
-}
+
 </style>

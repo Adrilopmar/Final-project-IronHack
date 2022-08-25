@@ -1,5 +1,6 @@
 <template>
   <Nav />
+  
   <div class="container">
     <p v-if="userTasks.length < 1" class="text-center mt-12">
       <i
@@ -11,32 +12,40 @@
   <div class="mt-6 mx-auto mt-12">
     <button v-wave @click="modalActive = true">Create new task</button>
   </div>
+  <div>
+    <searchBar @search="searching" :tasks="userTasks"/>
+  </div>
   <div class="separating"></div>
   <modal @close="close" :modalActive="modalActive" />
   <div class="flex gap-5 flex-wrap" >
   <!-- <div v-for="task in userTasks" :key="task.id"> -->
-    <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks()" :tasks="userTasks" />
+    <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks" @done="fetchedTasks" :tasks="userTasks" :filteredTasks="filteredTasks" />
   </div>
   <button @click="conse">conse</button>
 </template>
 
 <script setup>
+import searchBar from'../components/searchBar.vue'
 import Nav from "../components/Nav.vue";
 import { useTaskStore } from "../stores/task";
 import modal from "../components/newTaskModal.vue";
 import { computed, ref } from "vue";
 import taskDashboard from "../components/taskDashboard.vue";
+
 const taskStore = useTaskStore();
 let modalActive = ref(false);
-
+const filteredTasks = ref([])
 const userTasks = ref([]);
 
 const fetchedTasks = async () => {
   userTasks.value = await taskStore.fetchTasks();
 };
+const searching = (event) =>{
 
+  filteredTasks.value=event
+}
 const conse = () => {
-  console.log('hi from 2 lvl emit home comp');
+  
 };
 
 const close = () => {
@@ -48,6 +57,7 @@ const emit = defineEmits(["closeModal", false]);
 const prop = defineProps({
   modal: Boolean,
   tasks: Object,
+  filteredTasks:Array
 });
 
 
