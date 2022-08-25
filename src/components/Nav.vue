@@ -1,8 +1,11 @@
 <template>
     <div class="bg-nav flex justify-between">
         <div class="img-logo">
-        <img src="/src/assets/images/p't-full-logo.png" alt="">
+            <router-link to="/">
+                <img src="/src/assets/images/p't-full-logo.png" alt="">
+            </router-link>
         </div>
+        <router-link to="/profile"> Profile </router-link>
         <button v-wave="{color:'red'}" @click="signOut">Log out</button>
     </div>
 </template>
@@ -11,6 +14,7 @@
 import { ref, computed } from "vue";
 import {useUserStore} from '../stores/user'
 import { useRouter } from "vue-router";
+
 
 const redirect = useRouter();
 const userStore= useUserStore()
