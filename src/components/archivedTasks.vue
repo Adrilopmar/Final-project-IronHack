@@ -1,4 +1,5 @@
 <template> 
+<Nav/>
 <h3 class="text-6xl text-center my-12">Archived tasks</h3>
 <div class="flex flex-wrap justify-around">
     <div v-for="task in tasksDone" :key="task.id">
@@ -17,6 +18,7 @@
 <script setup>
 import {useTaskStore} from '../stores/task'
 import taskCards from './taskCards.vue'
+import Nav from './Nav.vue'
 import {ref} from 'vue'
 
 const taskStore=useTaskStore()

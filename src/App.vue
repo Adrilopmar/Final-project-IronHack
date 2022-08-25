@@ -33,7 +33,6 @@ const darkMode = ()=>{
 </script>
 
 <template >
-<Nav/>
 <router-view />
 
  <Footer class="mt-12" />

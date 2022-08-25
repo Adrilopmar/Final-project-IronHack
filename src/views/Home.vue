@@ -1,4 +1,6 @@
 <template>
+
+<Nav/>
   <div class="container">
     <p v-if="userTasks.length < 1" class="text-center mt-12">
       <i
