@@ -3,7 +3,6 @@
 
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
-  taralexy@hotmail.com - zxcvbnm
   <p v-if="showError" class="text-xs text-center my-3 text-red-700">{{emailPassError}}</p>
   <form class="w-full max-w-sm">
   <div class="md:flex md:items-center mb-6">
