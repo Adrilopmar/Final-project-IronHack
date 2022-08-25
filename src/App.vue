@@ -30,7 +30,7 @@ onMounted(async () => {
 
 <template>
  <router-view />
- <Footer class="" />
+ <Footer class="mt-12" />
  
 </template>
 

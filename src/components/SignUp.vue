@@ -1,5 +1,5 @@
 <template>
-<navNotLogged/>
+<navNotLogged class="mb-12"/>
   <div class="sign-up-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Register</h3>
   <form  class="w-full max-w-sm">

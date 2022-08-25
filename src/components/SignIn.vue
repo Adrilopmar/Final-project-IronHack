@@ -1,5 +1,6 @@
 <template>
-<navNotLogged/>
+<navNotLogged class="mb-12"/>
+
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
   taralexy@hotmail.com - zxcvbnm
