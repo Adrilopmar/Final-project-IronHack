@@ -138,7 +138,7 @@ if(password.value.length<6){
   showPassLengthError.value = true
   error.value ++
 }
-if(confrimPassword.value === password.value){
+if(confrimPassword.value != password.value){
   showPassNotMatchError.value = true
   error.value ++
 }
