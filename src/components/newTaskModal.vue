@@ -17,13 +17,13 @@
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-11/12">
                     <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900"> New task to do </DialogTitle>
                     <div class="mt-2 border-b border-teal-500 py-2 w-full">
-                        <input v-model="this.taskName" @focus="taskNameError=false"
+                        <input v-model="taskName" @focus="taskNameError=false"
                         id="taskName"
                         class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Task Name" aria-label="Full name">
                     </div>
                     <p v-if="taskNameError"  class="text-red-600">Task name must be at least 4 letters... lazy even for this? </p>
                     <div class="mt-2 border-b border-teal-500 py-2 w-full">
-                        <textarea v-model="this.taskDescription" @focus="taskDescriptionError=false"
+                        <textarea v-model="taskDescription" @focus="taskDescriptionError=false"
                         id="taskDescription" 
                         class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none resize-y w-full" 
                         type="textarea" placeholder="What do you should not procrastinate?" aria-label="Full name"></textarea>

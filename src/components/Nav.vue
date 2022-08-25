@@ -24,10 +24,6 @@ const signOut = (()=>{
     userStore.logOut()
     redirect.push({path: '/auth/login'})
 })
-const conse = ()=>{
-    console.log(user)
-    console.log(logged)
-}
 
 //constant to save a variable that will hold the use router method
 
