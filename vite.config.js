@@ -8,12 +8,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
+    }
+  },
+  build:{
     rollupOptions: {
       external: [
         "@headlessui/vue",
       ],
     },
-  },
+  }
  
 })
