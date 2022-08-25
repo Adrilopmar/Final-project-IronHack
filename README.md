@@ -56,5 +56,5 @@ Created a modal window to create a new task.
 fetched and displayed tasks from supabase. tasks are displayed instantly after created.
 
 #### Aug 23 2022
-implemented edit function with its styles. Now we have de U of C.R.U.D. still looking for the U =/.
+implemented edit function with its styles. Now we have de U of C.R.U.D. still looking for the D =/.
 implemented delete function. now I can say that we have the  all the letters of C.R.U.D.
