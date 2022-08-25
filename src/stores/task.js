@@ -36,6 +36,14 @@ export const useTaskStore = defineStore("tasks", {
          })
       .match({ id: id })
     },
+    async archiveTask(bool,id){
+      const { data, error } = await supabase
+      .from('tasks')
+      .update({ 
+        archived: bool
+         })
+      .match({ id: id })
+    },
     async deleteTask(id){
       const { data, error } = await supabase
       .from('tasks')

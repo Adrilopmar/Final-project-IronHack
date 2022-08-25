@@ -1,6 +1,4 @@
 <template>
-  <Nav />
-  
   <div class="container">
     <p v-if="userTasks.length < 1" class="text-center mt-12">
       <i
@@ -19,7 +17,7 @@
   <modal @close="close" :modalActive="modalActive" />
   <div class="flex gap-5 flex-wrap" >
   <!-- <div v-for="task in userTasks" :key="task.id"> -->
-    <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks" @done="fetchedTasks" :tasks="userTasks" :filteredTasks="filteredTasks" />
+    <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks" @done="fetchedTasks" :tasks="toDoTasks" />
   </div>
   <button @click="conse">conse</button>
 </template>
@@ -34,18 +32,12 @@ import taskDashboard from "../components/taskDashboard.vue";
 
 const taskStore = useTaskStore();
 let modalActive = ref(false);
-const filteredTasks = ref([])
+const toDoTasks = ref([])
 const userTasks = ref([]);
 
 const fetchedTasks = async () => {
   userTasks.value = await taskStore.fetchTasks();
-};
-const searching = (event) =>{
-
-  filteredTasks.value=event
-}
-const conse = () => {
-  
+  toDoTasks.value = userTasks.value.filter(task =>!task.archived)
 };
 
 const close = () => {

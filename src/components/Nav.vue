@@ -5,7 +5,9 @@
                 <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426359/todoApp/navbar/p_t-full-logo_km6wi2_wrsv6c.png" alt="">
             </router-link>
         </div>
+        <router-link to="/"> Home </router-link>
         <router-link to="/profile"> Profile </router-link>
+        <router-link to="/archived"> archived </router-link>
         <button v-wave="{color:'red'}" @click="signOut">Log out</button>
     </div>
 </template>

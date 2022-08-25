@@ -4,6 +4,7 @@ import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
+import Nav from './components/Nav.vue'
 import Footer from './components/Footer.vue'
 
 const router = useRouter();
@@ -26,14 +27,20 @@ onMounted(async () => {
     console.log(e);
   }
 });
+const darkMode = ()=>{
+ 
+}
 </script>
 
-<template>
- <router-view />
+<template >
+<Nav/>
+<router-view />
+
  <Footer class="mt-12" />
  
 </template>
 
 <style  src="../src/assets/tailwind.css">
+
 
 </style>

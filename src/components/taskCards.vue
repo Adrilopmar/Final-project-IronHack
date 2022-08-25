@@ -1,7 +1,6 @@
-<template>
-
-  <div :id="taskId"
-    class="card-task w-96 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9"
+<template >
+  <div 
+    class="card-task w-80 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9"
   >
   <div class="  ml-auto" :class="taskDone ?  'task-done':'task-not-done' "></div>
   <div>
@@ -32,16 +31,7 @@
       </div>
     </div>
   </div>
-    
     <div class="flex justify-end align-bottom">
-        
-        <!-- <button v-wave="{color:'black'}"
-        class=" bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded"
-          v-show="edit"
-          @click="editingTask"
-        >
-          cancel
-        </button> -->
         <button v-wave="{color:'black'}"
         class=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
           v-show="edit"
@@ -49,6 +39,7 @@
         >
           Confirm
         </button>
+        
       </div>
     <div v-if="!edit" class=" flex justify-between align-bottom">
       <button v-if="!taskDone"
@@ -69,14 +60,22 @@
       >
         done!
       </button>
-      <button v-else @click="isTaskDone(!taskDone,taskId)"
+      </div>
+      <div v-if="taskDone" class=" flex justify-between ">
+        <button  @click="taskIsArchived(true,taskId)" v-if="!taskArchived"
         v-wave="{ color: 'black' }"
-        class=" bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded justify-end ml-auto "
+        class=" bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded justify-end "
       >
-        still to be done </button>
-    </div>
+        archive! 
+        </button>
+        <button  @click="taskStill(false,taskId)"
+        v-wave="{ color: 'black' }"
+        class=" bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded justify-end "
+      >
+        still to do </button>
+      </div>
   </div>
-  <div></div>
+ 
 </template>
 
 <script setup>
@@ -94,6 +93,12 @@ const updateTask = async (name, description, id) => {
   emit("edit");
   editingTask()
 };
+const taskStill = async(bool,id)=>{
+  await taskStore.archiveTask(bool,id)
+  await taskStore.isDone(bool,id)
+  emit("edit");
+  emit('undo')
+}
 const editingTask= ()=>{
 
         // taskDescription=editingDescription.value
@@ -105,17 +110,22 @@ const deleteTask = async (id)=>{
     emit('delete')
 };
 const isTaskDone = async (isDone,id)=>{
-    console.log(isDone)
     await  taskStore.isDone(isDone,id)
     emit('done')
+}
+const taskIsArchived = async (bool,id)=>{
+  await taskStore.archiveTask(bool,id)
+  emit('edit')
+  emit('undo')
 }
 const props = defineProps({
   taskName: String,
   taskDescription: String,
   taskId: Number,
   taskDone:Boolean,
+  taskArchived:Boolean
 });
-const emit = defineEmits(["edit","delete",'done']);
+const emit = defineEmits(["edit","delete",'done','undo']);
 </script>
 
 <style scoped>
