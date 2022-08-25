@@ -12,16 +12,12 @@
   <div class="mt-6 mx-auto mt-12">
     <button v-wave @click="modalActive = true">Create new task</button>
   </div>
-  <div>
-    <searchBar @search="searching" :tasks="userTasks"/>
-  </div>
   <div class="separating"></div>
   <modal @close="close" :modalActive="modalActive" />
   <div class="flex gap-5 flex-wrap" >
   <!-- <div v-for="task in userTasks" :key="task.id"> -->
     <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks" @done="fetchedTasks" :tasks="toDoTasks" />
   </div>
-  <button @click="conse">conse</button>
 </template>
 
 <script setup>
