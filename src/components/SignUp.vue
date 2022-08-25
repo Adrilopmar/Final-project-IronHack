@@ -11,8 +11,9 @@
       </label>
     </div>
      <div class="md:w-2/3">
-      <input v-model="userName"
+      <input v-model="userName" @focus="toogleError('name')"
       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" id="inlineUserName" type="text" placeholder="Name">
+      <p  v-if="showNameError" class="error text-center text-xs">Name must be 4 characters long</p>
     </div>
   </div>
   <!-- Email input -->
@@ -23,11 +24,12 @@
       </label>
     </div>
     <div class="md:w-2/3">
-      <input v-model="userEmail"
+      <input v-model="userEmail" @focus="toogleError('email')"
         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" 
         id="inlineEmail" 
         type="email" 
         placeholder="example@mail.com">
+        <p v-if="showEmailError" class="error text-center text-xs">Please enter a valid email</p>
     </div>
   </div>
   <!-- Password input -->
@@ -38,11 +40,12 @@
       </label>
     </div>
     <div class="md:w-2/3">
-      <input v-model="password"
+      <input v-model="password" @focus="toogleError('pass')"
         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
         id="inlinPassword" 
         type="password" 
         placeholder="******************">
+        <p v-if="showPassLengthError" class="error text-center text-xs">password must be 6 characters long</p>
     </div>
   </div>
   <!-- confirm password input -->
@@ -53,15 +56,16 @@
       </label>
     </div>
     <div class="md:w-2/3">
-      <input v-model="confrimPassword"
+      <input v-model="confrimPassword" @focus="toogleError('confPass')"
       class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-confirm-password" type="password" placeholder="******************">
+      <p v-if="showPassNotMatchError" class="error text-center text-xs">passwords does not match</p>
     </div>
   </div>
   <!-- button to sing up   -->
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3"></div>
     <div class="md:w-2/3">
-      <button @click="register" v-wave
+      <button @click="validateRegister" v-wave
       class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
         Register
       </button>
@@ -90,16 +94,32 @@ import {ref}from 'vue'
 const route = "/auth/login";
 const buttonText = "Sign in";
 const userStore = useUserStore();
-// taralexy@hotmail.com
 const userName =ref('');
 const userEmail=ref('');
 const password=ref('');
-const confrimPassword= ref('')
+const confrimPassword= ref('');
+const error = ref(0)
+const mailRegEx = ref(`^[a-z0-9!#$%&'*+/=?^_{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$`)
+const showEmailError = ref(false)
+const showNameError = ref(false)
+const showPassLengthError = ref(false)
+const showPassNotMatchError = ref(false)
 
-const conse= ()=>{
-  
-  console.log(userEmail.value,password.value);
-};
+const toogleError = (err)=>{
+  switch(err){
+    case 'confPass':
+      showPassNotMatchError.value= false
+      break
+    case 'pass':
+      showPassLengthError.value =false
+      break
+    case 'email':
+      showEmailError.value = false
+      break
+    case 'name':
+      showNameError.value =false
+  }
+}
 // Input Fields
 
 // Error Message
@@ -111,11 +131,30 @@ const conse= ()=>{
 // Router to push user once SignedUp to Log In
 
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
+const validateRegister=()=>{
+  error.value = 0
+if(!userEmail.value.match(mailRegEx)){
+  showEmailError.value = true
+  error.value ++
+}
+if(userName.value.length<4){
+  showNameError.value = true
+  error.value ++
+}
+if(password.value.length<6){
+  showPassLengthError.value = true
+  error.value ++
+}
+if(confrimPassword.value === password.value){
+  showPassNotMatchError.value = true
+  error.value ++
+}
+if(error.value === 0){
+  register()
+}
+}
 const register= (()=>{
-  if(password.value === confrimPassword.value){
-    console.log(userName.value, userEmail.value,password.value,confrimPassword.value)
     userStore.signUp(userEmail.value,password.value,userName.value)
-  }
 })
 </script>
 
@@ -125,5 +164,8 @@ const register= (()=>{
   border-radius: 25px;
   background: #add2ff;
   
+}
+.error{
+  color: red;
 }
 </style>
