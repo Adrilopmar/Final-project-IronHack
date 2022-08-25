@@ -121,16 +121,9 @@ const toogleError = (err)=>{
   }
 }
 // Input Fields
-
 // Error Message
-
 // Show hide password variable
-
 // Show hide confrimPassword variable
-
-// Router to push user once SignedUp to Log In
-
-// Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const validateRegister=()=>{
   error.value = 0
 if(!userEmail.value.match(mailRegEx)){
@@ -153,9 +146,20 @@ if(error.value === 0){
   register()
 }
 }
-const register= (()=>{
-    userStore.signUp(userEmail.value,password.value,userName.value)
-})
+// Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
+const register= async ()=>{
+  try{
+    await userStore.signUp(userEmail.value,password.value,userName.value)
+    redirect.push({ path: "/auth/login" });
+  } catch (error) {
+        // displays error message
+        errorMsg.value = `Error: ${error.message}`;
+        // hides error message
+        setTimeout(() => {
+          errorMsg.value = null;
+        }, 5000);
+      }
+}
 </script>
 
 <style scope>
@@ -163,7 +167,7 @@ const register= (()=>{
   padding: 3rem;
   border-radius: 25px;
   background: #add2ff;
-  
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .error{
   color: red;

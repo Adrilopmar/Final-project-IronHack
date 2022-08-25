@@ -1,5 +1,5 @@
 /* @import "./base.css"; */
-:root{
+body{
   --main-bg-color: #eaeaea;
   --white-bg-color: #f8f8f8;
   --main-txt-color:#0C1713;
@@ -8,8 +8,17 @@
   --button-secondary: #d3d7dc;
   
 }
+body.dark-mode{
+  --main-bg-color: #221414;
+  --white-bg-color: #292727;
+  --main-txt-color:#0C1713;
+  --button-primary: #828486;
+  --button-primary-hover: #a3c1e6;
+  --button-secondary: #681818;
+}
 body{
-  background-color: var(--main-bg-color);
+  background: url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1661432721/todoApp/background/background-wall_hymamn.jpg) no-repeat fixed center/cover ;
+  /* background-color: var(--main-bg-color); */
   height: 100%;
 }
 html{

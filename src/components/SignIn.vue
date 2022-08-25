@@ -1,5 +1,5 @@
 <template>
-<navNotLogged class="mb-12"/>
+<navNotLogged @darkMode="$emit('darkMode')" class="mb-12"/>
 
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
@@ -108,6 +108,9 @@ const signIn = async () => {
 const hideError =()=>{
   showError.value = false
 }
+const emit = defineEmits([
+  'darkMode'
+])
 </script>
 
 <style scoped>
@@ -115,6 +118,6 @@ const hideError =()=>{
   padding: 3rem;
   border-radius: 25px;
   background: #add2ff;
-  
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
