@@ -2,9 +2,9 @@
   <footer class="text-center text-white w-full" style="background-color: #f1f1f1">
    <div class="mt-6">
     <div class="flex justify-center mb-9">
-        <a href="https://github.com/Adrilopmar" class="mr-9 text-gray-800"><img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661416996/todoApp/github_idekny.png" alt=""> </a>
-        <a href="www.linkedin.com/in/adrilopmar" class="mr-9 text-gray-800"><img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661416996/todoApp/linkedin-logo_hpnusw.png"  alt=""> </a>
-        <a href="#!" class="mr-9 text-gray-800"> <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661416996/todoApp/twitter_ce2nio.png"  alt=""></a>
+        <a href="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426351/todoApp/footer/github_idekny_lui9nc.png" alt=""> </a>
+        <a href="www.linkedin.com/in/adrilopmar" class="mr-9 text-gray-800"><img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426350/todoApp/footer/linkedin-logo_hpnusw_ijkzyi.png"  alt=""> </a>
+        <a href="#!" class="mr-9 text-gray-800"> <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426350/todoApp/footer/twitter_ce2nio_kogd7e.png"  alt=""></a>
       </div>
    </div>
     <div

@@ -2,7 +2,7 @@
     <div class="bg-nav flex justify-between">
         <div class="img-logo">
             <router-link to="/">
-                <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661416996/todoApp/p_t-full-logo_km6wi2.png" alt="">
+                <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426359/todoApp/navbar/p_t-full-logo_km6wi2_wrsv6c.png" alt="">
             </router-link>
         </div>
         <router-link to="/profile"> Profile </router-link>
