@@ -58,3 +58,15 @@ fetched and displayed tasks from supabase. tasks are displayed instantly after c
 #### Aug 23 2022
 implemented edit function with its styles. Now we have de U of C.R.U.D. still looking for the D =/.
 implemented delete function. now I can say that we have the  all the letters of C.R.U.D.
+
+#### Aug 26 2022
+We got the C.R.U.D so we started new challenges. Actually I started new challenge and just right before accomplishing it I
+Started a new challenge and so on..
+So there is a search bar almost done, there is a profile section almost done, there is the implementation of dark and light
+Theme almost done BUT there is the archived tasks component done
+I think that was better than the others that the reason why this one is finished
+And the other will be finished... Or not.. Who knows.
+Ah, BTW I just fixed a bug from the mobile... You know... I've got neither autocomoplete
+Nor ease. Try to code from the phone and then you tell me.
+
+Next stop? The sky! I mean... The challenges I dropped out. 
