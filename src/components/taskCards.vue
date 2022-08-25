@@ -1,6 +1,6 @@
 <template>
 
-  <div 
+  <div :id="taskId"
     class="card-task w-96 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9"
   >
   <div class="  ml-auto" :class="taskDone ?  'task-done':'task-not-done' "></div>
@@ -51,14 +51,14 @@
         </button>
       </div>
     <div v-if="!edit" class=" flex justify-between align-bottom">
-      <button
+      <button v-if="!taskDone"
         v-wave="{ color: 'black' }"
         class=" bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded"
         @click="editTask"
       >
         edit
       </button>
-      <button @click="deleteTask(taskId)"
+      <button v-if="!taskDone" @click="deleteTask(taskId)"
         v-wave="{ color: 'black' }"
         class=" bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
             delete
@@ -71,7 +71,7 @@
       </button>
       <button v-else @click="isTaskDone(!taskDone,taskId)"
         v-wave="{ color: 'black' }"
-        class=" bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded"
+        class=" bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded justify-end ml-auto "
       >
         still to be done </button>
     </div>
@@ -129,7 +129,6 @@ const emit = defineEmits(["edit","delete",'done']);
 input,textarea {
     background: #ffffff8c;
 }
-
 .task-done{
     top: 0;
     right: 0;
