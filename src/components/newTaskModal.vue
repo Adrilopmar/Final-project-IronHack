@@ -53,7 +53,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '../../node_modules/@headlessui/vue'
 import {useTaskStore} from '../stores/task'
 
 const taskStore = useTaskStore()
