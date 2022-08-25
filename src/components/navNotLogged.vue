@@ -1,7 +1,7 @@
 <template>
   <div class="bg-nav flex justify-between">
         <div class="img-logo">
-        <img src="/src/assets/images/p't-full-logo.png" alt="">
+        <img src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661416996/todoApp/p_t-full-logo_km6wi2.png" alt="">
         </div>
     </div>
 </template>
