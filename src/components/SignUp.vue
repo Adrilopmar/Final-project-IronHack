@@ -145,7 +145,8 @@ if(confrimPassword.value != password.value){
   error.value ++
 }
 if(error.value === 0){
-  register().then(updateUser())
+  register()
+  updateUser()
 }
 }
 const updateUser = async (name) => {
