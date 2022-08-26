@@ -146,7 +146,6 @@ if(confrimPassword.value != password.value){
 }
 if(error.value === 0){
   register().then(updateUser())
-  redirect.push({ path: "/auth/login" });
 }
 }
 const updateUser = async (name) => {
