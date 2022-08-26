@@ -104,6 +104,7 @@ const showEmailError = ref(false)
 const showNameError = ref(false)
 const showPassLengthError = ref(false)
 const showPassNotMatchError = ref(false)
+const user = ref([])
 
 const toogleError = (err)=>{
   switch(err){
@@ -125,6 +126,7 @@ const toogleError = (err)=>{
 // Show hide password variable
 // Show hide confrimPassword variable
 const validateRegister=()=>{
+  updateUser()
   error.value = 0
 if(!userEmail.value.match(mailRegEx)){
   showEmailError.value = true
@@ -143,10 +145,15 @@ if(confrimPassword.value != password.value){
   error.value ++
 }
 if(error.value === 0){
-  register()
-  newUser()
+  register().then(updateUser())
+  redirect.push({ path: "/auth/login" });
 }
 }
+const updateUser = async (name) => {
+  const user = await userStore.getProfile()
+  await userStore.updateProfile(user.username);
+  console.log(user.username)
+};
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const register= async ()=>{
   try{
@@ -160,19 +167,7 @@ const register= async ()=>{
           errorMsg.value = null;
         }, 5000);
       }
-}
-const newUser = async()=>{
-  try{
-  await userStore.newUser(userName.value,userEmail.value)
-    redirect.push({ path: "/auth/login" });
-  } catch (error) {
-        // displays error message
-        errorMsg.value = `Error: ${error.message}`;
-        // hides error message
-        setTimeout(() => {
-          errorMsg.value = null;
-        }, 5000);
-      }
+      
 }
 </script>
 
