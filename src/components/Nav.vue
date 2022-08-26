@@ -8,9 +8,9 @@
         />
       </router-link>
     </div>
-    <router-link to="/"> Home </router-link>
-    <router-link to="/profile"> Profile </router-link>
-    <router-link to="/archived"> archived </router-link>
+    <router-link class="text-center m-auto py-1 px-5 link-nav different" to="/"> Home </router-link>
+    <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/profile"> Profile </router-link>
+    <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/archived"> archived </router-link>
     <button v-wave="{ color: 'red' }" @click="signOut">Log out</button>
   </div>
   <!-- mobile navbar -->
@@ -29,9 +29,9 @@
       </div>
       </div>
     <div class="flex justify-around mt-5">
-        <router-link to="/"> Home </router-link>
-        <router-link to="/profile"> Profile </router-link>
-        <router-link to="/archived"> archived </router-link>
+        <router-link class="text-center link-nav" to="/"> Home </router-link>
+        <router-link class="text-center link-nav" to="/profile"> Profile </router-link>
+        <router-link class="text-center link-nav" to="/archived"> archived </router-link>
     </div>
   </div>
 </template>
@@ -82,5 +82,13 @@ button {
 button:hover {
   background: #f941448e;
   transition: 0.5s;
+}
+.link-nav{
+  border-bottom: 1px solid transparent;
+  color: var(--main-txt-color);
+}
+.link-nav:hover{
+  border-bottom: 1px solid var(--main-txt-color) ;
+ 
 }
 </style>

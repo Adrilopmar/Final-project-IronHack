@@ -35,18 +35,18 @@ html{
 
 }
 
-a,
+.auth-link,
 .green {
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
+  border-bottom: 2px solid transparent;
   transition: 0.4s;
 }
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.auth-link:hover{
+ border-bottom: 2px solid hsla(160, 100%, 37%, 1);
 }
+
+
 
 @media (min-width: 1024px) {
   body {

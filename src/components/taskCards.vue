@@ -1,6 +1,6 @@
 <template >
   <div 
-    class="card-task w-80 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9"
+    class="card-task w-96 border border-gray-400 lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 justify-around leading-normal flex flex-col mb-9 hover:scale-105 ease-in-out duration-150"
   >
   <div class="  ml-auto" :class="taskDone ?  'task-done':'task-not-done' "></div>
   <div>
@@ -134,7 +134,8 @@ const emit = defineEmits(["edit","delete",'done','undo']);
   min-height: 250px;
   background: #fff740;
   /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 10px 10px;
 }
 input,textarea {
     background: #ffffff8c;
@@ -160,6 +161,7 @@ input,textarea {
     border-color: transparent #ff4800 transparent transparent;
     
 }
+
 </style>
 
 <!-- 

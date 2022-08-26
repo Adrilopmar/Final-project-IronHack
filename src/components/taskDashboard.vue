@@ -1,4 +1,5 @@
 <template>
+<h3 class="text-4xl m-auto my-6 font-bold">Tasks to Procrastinan't</h3>
 <div class="flex flex-wrap justify-around ">
     <div v-for="task in tasks" :key="task.id" >
       <taskCards 

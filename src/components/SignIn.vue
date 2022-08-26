@@ -43,7 +43,7 @@
     <label class="md:w-2/3 block text-gray-500 font-bold">
       <span class="text-sm">Not having an account yet?</span>
       <br>
-      <span  class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" /></span>
+      <span  class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" class="auth-link"/></span>
     </label>
   </div>
 </form>
@@ -115,8 +115,8 @@ const emit = defineEmits([
 <style scoped>
 .sign-in-bg{
   padding: 3rem;
-  border-radius: 25px;
+  border-radius: 15px;
   background: #add2ff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 10px 10px;
 }
 </style>

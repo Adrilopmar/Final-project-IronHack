@@ -77,7 +77,7 @@
     <label class="md:w-2/3 block text-gray-500 font-bold">
       <span class="text-sm">Alredy registered?</span>
       <br>
-      <span class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" /></span>
+      <span class="text-xl"><PersonalRouter :route="route" :buttonText="buttonText" class="auth-link" /></span>
     </label>
   </div>
 </form>
@@ -144,6 +144,7 @@ if(confrimPassword.value != password.value){
 }
 if(error.value === 0){
   register()
+  newUser()
 }
 }
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
@@ -160,14 +161,27 @@ const register= async ()=>{
         }, 5000);
       }
 }
+const newUser = async()=>{
+  try{
+  await userStore.newUser(userName.value,userEmail.value)
+    redirect.push({ path: "/auth/login" });
+  } catch (error) {
+        // displays error message
+        errorMsg.value = `Error: ${error.message}`;
+        // hides error message
+        setTimeout(() => {
+          errorMsg.value = null;
+        }, 5000);
+      }
+}
 </script>
 
 <style scope>
 .sign-up-bg{
   padding: 3rem;
-  border-radius: 25px;
+  border-radius: 15px;
   background: #add2ff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 10px 10px;
 }
 .error{
   color: red;
