@@ -88,6 +88,7 @@
 import navNotLogged from './navNotLogged.vue'
 import {useUserStore} from '../stores/user'
 import PersonalRouter from "./PersonalRouter.vue";
+import { useRouter } from "vue-router";
 import {ref}from 'vue'
 
 // Route Variables
@@ -105,6 +106,7 @@ const showNameError = ref(false)
 const showPassLengthError = ref(false)
 const showPassNotMatchError = ref(false)
 const user = ref([])
+const redirect = useRouter();
 
 const toogleError = (err)=>{
   switch(err){
@@ -125,8 +127,7 @@ const toogleError = (err)=>{
 // Error Message
 // Show hide password variable
 // Show hide confrimPassword variable
-const validateRegister=()=>{
-  updateUser()
+const validateRegister= ()=>{
   error.value = 0
 if(!userEmail.value.match(mailRegEx)){
   showEmailError.value = true
@@ -146,7 +147,7 @@ if(confrimPassword.value != password.value){
 }
 if(error.value === 0){
   register()
-  updateUser()
+  
 }
 }
 const updateUser = async (name) => {
@@ -159,6 +160,7 @@ const register= async ()=>{
   try{
     await userStore.signUp(userEmail.value,password.value,userName.value)
     redirect.push({ path: "/auth/login" });
+    
   } catch (error) {
         // displays error message
         errorMsg.value = `Error: ${error.message}`;
