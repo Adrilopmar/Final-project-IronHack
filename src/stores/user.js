@@ -21,6 +21,15 @@ export const useUserStore = defineStore("user", {
           this.profile = profile
           return this.profile
     },
+    async createUser(userName,mail) {
+      const { data, error } = await supabase.from("profiles").insert([
+        {
+          id: useUserStore().user.id,
+          username: userName,
+          email: mail
+        },
+      ]);
+    },
     async updateProfile(name) {
       try {
         const user = await supabase.auth.user();

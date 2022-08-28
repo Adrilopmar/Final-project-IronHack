@@ -5,6 +5,7 @@ import SignIn from "../components/SignIn.vue";
 import SignUp from "../components/SignUp.vue";
 import profile from "../components/profile.vue";
 import archivedTasks from "../components/archivedTasks.vue";
+import userName from "../components/userName.vue";
 
 
 const routes = [
@@ -19,6 +20,7 @@ const routes = [
   { path: "/", component: Home },
   { path: "/profile", component: profile },
   { path: "/archived", component: archivedTasks },
+  { path: "/newuser", component: userName },
 ];
 const router = createRouter({
   history: createWebHistory(),

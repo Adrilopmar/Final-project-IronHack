@@ -158,8 +158,9 @@ const updateUser = async (name) => {
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const register= async ()=>{
   try{
-    await userStore.signUp(userEmail.value,password.value,userName.value)
     redirect.push({ path: "/auth/login" });
+    await userStore.signUp(userEmail.value,password.value,userName.value)
+    await userStore.createUser(userName.value,userEmail.value)
     
   } catch (error) {
         // displays error message
