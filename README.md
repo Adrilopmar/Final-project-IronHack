@@ -70,3 +70,6 @@ Ah, BTW I just fixed a bug from the mobile... You know... I've got neither autoc
 Nor ease. Try to code from the phone and then you tell me.
 
 Next stop? The sky! I mean... The challenges I dropped out. 
+
+#### Aug 28 2022
+Time to hunt! Time to look over the code and haunt down all those bugs. Do you know where are they hiding? cause I don't...
