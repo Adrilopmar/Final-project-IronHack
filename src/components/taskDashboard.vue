@@ -1,6 +1,6 @@
 <template>
-<h3 class="text-4xl m-auto my-6 font-bold">Tasks to Procrastinan't</h3>
-<div class="flex flex-wrap justify-around ">
+<h3 class="text-4xl m-auto my-6 font-bold w-full text-center">Tasks to Procrastinan't</h3>
+<div class="flex flex-wrap justify-around w-full">
     <div v-for="task in tasks" :key="task.id" >
       <taskCards 
         @edit="$emit('edit')"
