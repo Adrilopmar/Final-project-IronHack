@@ -1,15 +1,16 @@
 <template>
 
 <Nav/>
+<div class="main">
   <div class="container">
-    <p v-if="userTasks.length < 1" class="text-center mt-12">
+    <p v-if="toDoTasks.length < 1" class="text-center mt-12">
       <i
         >Not tasks to do... yet. Are you procrastinating even writing the tasks
         down?</i
       >
     </p>
   </div>
-  <div class="mt-6 mx-auto mt-12">
+  <div class="mt-6 mx-auto mt-12 flex">
     <button v-wave @click="modalActive = true">Create new task</button>
   </div>
   <div class="separating"></div>
@@ -17,6 +18,7 @@
   <div class="flex gap-5 flex-wrap" >
   <!-- <div v-for="task in userTasks" :key="task.id"> -->
     <taskDashboard @edit="fetchedTasks" @delete="fetchedTasks" @done="fetchedTasks" :tasks="toDoTasks" />
+  </div>
   </div>
 </template>
 
@@ -55,6 +57,9 @@ computed(fetchedTasks());
 </script>
 
 <style scoped>
+.main{
+  height: 100vh;
+}
 .container {
   color: var(--main-txt-color);
 }
