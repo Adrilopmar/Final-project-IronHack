@@ -12,7 +12,8 @@
       <div class="mb-8">
         <div class="text-gray-900 font-bold text-xl mb-2 md:flex md:justify-between">
           <div v-if="!editing">
-            <h3>{{ userName.username }}</h3>
+            <h3 v-if="userName.username">{{ userName.username }}</h3>
+            
           </div>
           <div v-if="editing" >
             <input
@@ -41,7 +42,7 @@
 <script setup>
 import Nav from "./Nav.vue";
 import { useUserStore } from "../stores/user";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const userStore = useUserStore();
 const user = ref([]);
 const userName = ref("");
@@ -50,16 +51,17 @@ const editing = ref(false);
 const editUser = () => {
   editing.value = !editing.value;
 };
-const getUser = async () => {
-  user.value = await userStore.getProfile();
-  userName.value = user.value;
-};
+// const getUser = async () => {
+//   user.value = await userStore.getProfile();
+//   userName.value = user.value;
+// };
 
 const updateUser = async (name) => {
   await userStore.updateProfile(userName.value.username);
     editUser()
 };
-getUser();
+
+
 </script>
 
 <style scoped>

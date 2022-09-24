@@ -3,6 +3,7 @@
 
 <div class="sign-in-bg m-auto">
   <h3 class="text-4xl font-semibold mb-9">Sign In</h3>
+  <p v-if="errorMsg" class="text-xs text-center my-3 text-red-700">{{errorMsg}}</p>
   <p v-if="showError" class="text-xs text-center my-3 text-red-700">{{emailPassError}}</p>
   <form class="w-full max-w-sm">
   <div class="md:flex md:items-center mb-6">
@@ -71,6 +72,7 @@ const showError = ref(false);
 
 // Error Message
 const errorMsg = ref("");
+const credentialError = ref("")
 
 //Show hide password variables
 const passwordFieldType = computed(() =>
