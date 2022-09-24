@@ -132,15 +132,15 @@ const emit = defineEmits(["edit","delete",'done','undo']);
 .card-task {
     position: relative;
   min-height: 250px;
-  background: #fff740;
+  background: var(--task-card-bg-color);
   /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 10px 10px;
+  box-shadow: var(--box-shadow-back) 0px 14px 28px, var(--box-shadow-back) 0px 10px 10px;
 }
 input,textarea {
     background: #ffffff8c;
 }
-.task-done{
+.task-done, .task-not-done{
     top: 0;
     right: 0;
     position:absolute;
@@ -148,20 +148,14 @@ input,textarea {
     height: 0;
     border-style: solid;
     border-width: 0 60px 60px 0;
-    border-color: transparent #0dff00 transparent transparent;
 }
 .task-not-done{
-    top: 0;
-    right: 0;   
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 60px 60px 0;
-    border-color: transparent #ff4800 transparent transparent;
-    
+    border-color: transparent var(--reminder-task-not-done) transparent transparent;
 }
-
+.task-done{
+  border-color: transparent var(--reminder-task-done) transparent transparent;
+}
+ 
 </style>
 
 <!-- 

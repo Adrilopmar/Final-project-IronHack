@@ -6,6 +6,10 @@ body{
   --button-primary: #7ba8e0;
   --button-primary-hover: #a4c7f3;
   --button-secondary: #d3d7dc;
+  --box-shadow-back: rgba(0, 0, 0, 0.5);
+  --task-card-bg-color:#fff740;
+  --reminder-task-not-done: #ff4800;
+  --reminder-task-done: #0dff00;
   
 }
 body.dark-mode{
@@ -15,6 +19,11 @@ body.dark-mode{
   --button-primary: #828486;
   --button-primary-hover: #a3c1e6;
   --button-secondary: #681818;
+  --box-shadow-back: rgba(0, 0, 0, 0.5);
+  --task-card-bg-color:#fff740;
+  --reminder-task-not-done: #ff4800;
+  --reminder-task-done: #0dff00;
+  
 }
 body{
   background: url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1661432721/todoApp/background/background-wall_hymamn.jpg) no-repeat fixed center/cover ;
