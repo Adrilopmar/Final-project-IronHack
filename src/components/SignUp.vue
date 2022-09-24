@@ -207,11 +207,9 @@ const validateRegister = () => {
 
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const register = async () => {
-  debugger
   try {
     redirect.push({ path: "/auth/login" });
-    await userStore.signUp(userEmail.value, password.value, userName.value);
-    await userStore.createUser(userName.value, userEmail.value);
+    const userId = await userStore.signUp(userEmail.value, password.value, userName.value);
   } catch (error) {
     // displays error message
     errorMsg.value = `Error: ${error.message}`;
