@@ -13,21 +13,31 @@ export const useUserStore = defineStore("user", {
     },
     async getProfile() {
       try {
-        const user = await supabase.auth.user();
-        const { data: profile } = await supabase
+        const user = supabase.auth.user();
+        let {
+          data: profile,
+          error,
+          status,
+        } = await supabase
           .from("profiles")
-          .select(`username`)
+          .select(`*`)
           .eq("id", user.id)
           .single();
+
+        if (error && status !== 406) {
+          throw error;
+        }
+
         this.profile = profile;
+        return this.profile;
       } catch (error) {
-        alert(error.message);
+        if (error) throw error;
       }
     },
-    async createUser(userName, mail) {
+    async createUser(userName, mail, id) {
       const { data, error } = await supabase.from("profiles").insert([
         {
-          id: this.user.id,
+          id: id,
           username: userName,
           email: mail,
         },
@@ -36,9 +46,9 @@ export const useUserStore = defineStore("user", {
     },
     async updateProfile(name) {
       try {
-        const user = await supabase.auth.user();
+        const user = supabase.auth.user();
         const updates = {
-          id: user.id,
+          id: this.user.id,
           username: name,
           updated_at: new Date(),
         };
@@ -59,7 +69,7 @@ export const useUserStore = defineStore("user", {
       if (error) throw error;
       if (user) {
         this.user = user;
-        console.log(this.user);
+        console.log(this.user.id);
       }
     },
     async signIn(email, password) {
