@@ -73,3 +73,11 @@ Next stop? The sky! I mean... The challenges I dropped out.
 
 #### Aug 28 2022
 Time to hunt! Time to look over the code and haunt down all those bugs. Do you know where are they hiding? cause I don't...
+
+#### from sep 1 2022 to sep 17 2022
+This leap of time is also known as a long period without commiting... (sorry funny names wasn't coming to my mind -.-)
+
+#### sep 26 2022
+After long time working on Procastinan't and not updating the Readme I must say that there has been a lot of troubles
+I tried to implement a lot of features I told I would but everything started to shater, explode, go bananas and frying eggs.
+And now, after a long time, I can say that all those bugs were fixed. almost the ones I realized they existed.
