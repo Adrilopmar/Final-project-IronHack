@@ -12,6 +12,7 @@
   --reminder-task-not-done: #ff4800;
   --reminder-task-done: #0dff00;
   --main-img-bg:url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1661432721/todoApp/background/background-wall_hymamn.jpg)
+  --modal-bg: #f1f1f1
   
 }
 :root.dark-mode{
@@ -26,8 +27,9 @@
   --task-card-bg-color:#F2C84B;
   --reminder-task-not-done: #ff4800;
   --reminder-task-done: #0ac000;
-  --main-img-bg:url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1664191262/todoApp/background/background-wall_hymamn_40op_mlaiz1.png)
-  
+  --main-img-bg:url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1664191262/todoApp/background/background-wall_hymamn_40op_mlaiz1.png);
+  --modal-bg: #e0e0e0;
+
 }
 body{
   background: var(--main-img-bg) no-repeat fixed center/cover ;

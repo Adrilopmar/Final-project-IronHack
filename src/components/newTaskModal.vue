@@ -9,7 +9,7 @@
         <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <DialogPanel class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
-              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="try px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div v-if="!taskCreated" class="sm:flex sm:items-start">
                   <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                    <img class="w-3/4" src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426390/todoApp/modal%20new%20task/pen-notebook_fzbezp_itulll.png" alt="pen">
@@ -104,3 +104,8 @@ const emit = defineEmits([
 ])
 
 </script>
+<style scoped>
+.try{
+  background: var(--modal-bg);
+}
+</style>
