@@ -59,9 +59,11 @@ const getUser = async () => {
 
 const updateUser = async (e) => {
   e.preventDefault()
-  await userStore.updateProfile(userName.value);
-    editUser()
+  if(userName.value){
+    await userStore.updateProfile(userName.value);
     getUser()
+    }
+    editUser()
 };
 
   getUser()
