@@ -1,5 +1,4 @@
 <template>
-  <Nav />
   <div class="main">
     <h3 class="text-6xl text-center my-12">Archived tasks</h3>
     <p v-if="!tasksDone.length" class="text-center">

@@ -1,5 +1,4 @@
 <template>
-  <Nav />
 
   <div class="max-w-sm w-3/4 m-auto max-w-full flex container-profile">
     <div
