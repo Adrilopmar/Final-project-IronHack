@@ -1,32 +1,36 @@
 /* @import "./base.css"; */
-body{
+:root{
   --main-bg-color: #eaeaea;
   --white-bg-color: #f8f8f8;
   --main-txt-color:#0C1713;
   --button-primary: #7ba8e0;
   --button-primary-hover: #a4c7f3;
   --button-secondary: #d3d7dc;
+  --button-secondary-hover: #f941448e;
   --box-shadow-back: rgba(0, 0, 0, 0.5);
-  --task-card-bg-color:#fff740;
+  --task-card-bg-color:#F2C84B;
   --reminder-task-not-done: #ff4800;
   --reminder-task-done: #0dff00;
+  --main-img-bg:url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1661432721/todoApp/background/background-wall_hymamn.jpg)
   
 }
-body.dark-mode{
-  --main-bg-color: #221414;
-  --white-bg-color: #292727;
-  --main-txt-color:#0C1713;
-  --button-primary: #828486;
+:root.dark-mode{
+  --main-bg-color: #494949;
+  --white-bg-color: #585858;
+  --main-txt-color:#f1f1f1;
+  --button-primary: #2289c5;
   --button-primary-hover: #a3c1e6;
-  --button-secondary: #681818;
+  --button-secondary: #d3d7dc;
+  --button-secondary-hover: #f941448e;
   --box-shadow-back: rgba(0, 0, 0, 0.5);
-  --task-card-bg-color:#fff740;
+  --task-card-bg-color:#F2C84B;
   --reminder-task-not-done: #ff4800;
-  --reminder-task-done: #0dff00;
+  --reminder-task-done: #0ac000;
+  --main-img-bg:url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1664191262/todoApp/background/background-wall_hymamn_40op_mlaiz1.png)
   
 }
 body{
-  background: url(https://res.cloudinary.com/djqzi4hgo/image/upload/v1661432721/todoApp/background/background-wall_hymamn.jpg) no-repeat fixed center/cover ;
+  background: var(--main-img-bg) no-repeat fixed center/cover ;
   /* background-color: var(--main-bg-color); */
   height: 100%;
 }

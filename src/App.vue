@@ -6,6 +6,7 @@ import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
 import Nav from './components/Nav.vue'
 import Footer from './components/Footer.vue'
+import navNotLogged from './components/navNotLogged.vue'
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -27,16 +28,16 @@ onMounted(async () => {
     console.log(e);
   }
 });
-const darkMode = ()=>{
- 
-}
+
 </script>
 
 <template >
+<Nav v-if="user"/>
+<navNotLogged v-else/>
 <router-view />
 
- <Footer class="mt-12" />
  
+ <Footer class="mt-12" />
 </template>
 
 <style  src="../src/assets/tailwind.css">

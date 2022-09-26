@@ -7,11 +7,14 @@
             <img @click="toggleMode" src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661427223/todoApp/navbar/sun-3-64_jypk1x.png" alt="">
             <img @click="toggleMode" src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661427478/todoApp/navbar/moon-4-64_nfn4yg.png" alt="">
         </div> -->
+        <userTheme/>
     </div>
+
 </template>
 
 <script setup>
 import {ref} from 'vue'
+import userTheme from './userTheme.vue'
 const darkMode = ref(false)
 const toggleMode = ()=>{
     darkMode.value = !darkMode.value

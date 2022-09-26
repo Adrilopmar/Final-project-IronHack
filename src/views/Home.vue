@@ -1,7 +1,5 @@
 <template>
-
-<Nav/>
-<div class="main">
+<div class="">
   <div class="container">
     <p v-if="toDoTasks.length < 1" class="text-center mt-12">
       <i
@@ -24,13 +22,14 @@
 
 <script setup>
 import searchBar from'../components/searchBar.vue'
-import Nav from "../components/Nav.vue";
 import { useTaskStore } from "../stores/task";
 import modal from "../components/newTaskModal.vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import taskDashboard from "../components/taskDashboard.vue";
+import {useUserStore} from '../stores/user.js'
 
 const taskStore = useTaskStore();
+const userStore = useUserStore()
 let modalActive = ref(false);
 const toDoTasks = ref([])
 const userTasks = ref([]);
@@ -52,14 +51,14 @@ const prop = defineProps({
   filteredTasks:Array
 });
 
-
+onMounted(
+  userStore.fetchUser()
+)
 computed(fetchedTasks());
 </script>
 
 <style scoped>
-.main{
-  height: 100vh;
-}
+
 .container {
   color: var(--main-txt-color);
 }

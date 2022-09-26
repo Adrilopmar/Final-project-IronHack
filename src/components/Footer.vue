@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-center text-white w-full" style="background-color: #f1f1f1">
+  <footer class="text-center text-white w-full">
    <div class="mt-6">
     <div class="flex justify-center mb-9">
         <a href="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426351/todoApp/footer/github_idekny_lui9nc.png" alt=""> </a>
@@ -8,8 +8,7 @@
       </div>
    </div>
     <div
-      class="text-center text-gray-700 p-4"
-      style="background-color: rgba(0, 0, 0, 0.2)"
+      class="text-center text-gray-700 p-4 footer-copy"
     >
       © 2021 Copyright:
       <a class="text-gray-800" href="https://tailwind-elements.com/"
@@ -22,6 +21,15 @@
 <script setup></script>
 
 <style scoped>
+footer{
+background-color: var(--main-bg-color);
+}
+.footer-copy{
+/* background-color: rgba(0, 0, 0, 0.2); */
+color: var(--main-txt-color);
+background-color: rgba(255, 255, 255, 0.3);
+}
+
 img{
   width: 100%;
 }

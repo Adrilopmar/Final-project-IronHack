@@ -1,22 +1,37 @@
 <template>
-  <div class="bg-nav flex justify-between hidden md:flex">
-    <div class="img-logo">
+  <div class="bg-nav hidden md:block w-full">
+    <div class="flex w-full justify-between">
+      <div class="img-logo ">
       <router-link to="/">
         <img
+        v-if="mainLogo"
           src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426359/todoApp/navbar/p_t-full-logo_km6wi2_wrsv6c.png"
           alt=""
         />
+        <img v-else
+        src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1664192001/todoApp/navbar/procrastinan_t-full-logo-white_cr9fyp.png" alt="">
       </router-link>
     </div>
-    <router-link class="text-center m-auto py-1 px-5 link-nav different" to="/"> Home </router-link>
-    <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/profile"> Profile </router-link>
-    <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/archived"> archived </router-link>
-    <button v-wave="{ color: 'red' }" @click="signOut">Log out</button>
+    <div class="links-nav flex jusify-around w-3/5 mx-auto">
+  <div class="flex w-2/3 justify-around mr-20">
+      <router-link class="text-center m-auto py-1 px-5 link-nav different" to="/"> Home </router-link>
+      <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/profile"> Profile </router-link>
+      <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/archived"> archived </router-link>
+  </div>
+      
+      <userTheme @theme="changeTheme"/>
+    </div>
+      
+      <button v-wave="{ color: 'red' }" @click="signOut">Log out</button>
+
+   
+    </div>
+    
   </div>
   <!-- mobile navbar -->
   <div class="bg-nav md:hidden">
     <div class="flex justify-between">
-      <div class="img-logo-mobile">
+      <div class="img-logo-mobile ">
         <router-link to="/">
           <img
             src="https://res.cloudinary.com/djqzi4hgo/image/upload/v1661426359/todoApp/navbar/p_t-logo_eybmfq_eiuekm.png"
@@ -24,14 +39,16 @@
           />
         </router-link>
       </div>
+     
       <div>
         <button v-wave="{ color: 'red' }" @click="signOut">Log out</button>
       </div>
       </div>
-    <div class="flex justify-around mt-5">
+     <div class="flex w-full justify-between mt-5">
         <router-link class="text-center link-nav" to="/"> Home </router-link>
         <router-link class="text-center link-nav" to="/profile"> Profile </router-link>
         <router-link class="text-center link-nav" to="/archived"> archived </router-link>
+        <userTheme @theme="changeTheme"/>
     </div>
   </div>
 </template>
@@ -40,13 +57,17 @@
 import { ref, computed } from "vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
+import userTheme from './userTheme.vue'
 
 const redirect = useRouter();
 const userStore = useUserStore();
+const mainLogo = ref(true)
 const signOut = () => {
   userStore.logOut();
   redirect.push({ path: "/auth/login" });
+  userStore.fetchUser()
 };
+const changeTheme =()=> mainLogo.value= !mainLogo.value
 
 //constant to save a variable that will hold the use router method
 
@@ -63,7 +84,7 @@ const signOut = () => {
 .bg-nav {
   background: var(--white-bg-color);
   padding: 1.5rem 3rem;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  box-shadow: var(--box-shadow-back) 0px 25px 20px -20px;
 }
 .img-logo {
   min-width: 310px;
@@ -80,8 +101,9 @@ button {
   background: var(--button-secondary);
 }
 button:hover {
-  background: #f941448e;
+  background: var(  --button-secondary-hover);
   transition: 0.5s;
+  
 }
 .link-nav{
   border-bottom: 1px solid transparent;
