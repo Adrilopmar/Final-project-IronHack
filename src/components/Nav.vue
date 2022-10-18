@@ -18,15 +18,10 @@
       <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/profile"> Profile </router-link>
       <router-link class="text-center m-auto py-1 px-5 link-nav hover:transition" to="/archived"> archived </router-link>
   </div>
-      
       <userTheme @theme="changeTheme"/>
     </div>
-      
       <button v-wave="{ color: 'red' }" @click="signOut">Log out</button>
-
-   
     </div>
-    
   </div>
   <!-- mobile navbar -->
   <div class="bg-nav md:hidden">

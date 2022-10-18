@@ -11,11 +11,11 @@
       <div v-else class="mb-5"> 
         <!-- <label for="task-name">New task name</label> -->
         <input id="inputName"
-        v-model="taskName"
-        
+        v-model="userTaskName"
           type="text"
           name="task-name"
           class="appearance-none border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          :placeholder="taskName"
         />
       </div>
       <p v-if="!edit" class="text-gray-700 text-base">{{ taskDescription }}</p>
@@ -25,8 +25,9 @@
           v-show="edit"
           type="text"
           name="task-description"
-          v-model="taskDescription"
+          v-model="userTaskDescription"
           class="appearance-none  border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          :placeholder="taskDescription"
         ></textarea>
       </div>
     </div>
@@ -35,11 +36,10 @@
         <button v-wave="{color:'black'}"
         class=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
           v-show="edit"
-          @click="updateTask(taskName, taskDescription, taskId)"
+          @click="updateTask(userTaskName, userTaskDescription, taskId)"
         >
           Confirm
         </button>
-        
       </div>
     <div v-if="!edit" class=" flex justify-between align-bottom">
       <button v-if="!taskDone"
@@ -84,8 +84,10 @@ import { useTaskStore } from "../stores/task";
 
 const taskStore = useTaskStore();
 const edit = ref(false);
-const editTask = () => {
+const userTaskName = ref('');
+const userTaskDescription = ref('');
 
+const editTask = () => {
   edit.value = !edit.value;
 };
 const updateTask = async (name, description, id) => {
@@ -100,10 +102,7 @@ const taskStill = async(bool,id)=>{
   emit('undo')
 }
 const editingTask= ()=>{
-
-        // taskDescription=editingDescription.value
     edit.value = !edit.value;
-
 };
 const deleteTask = async (id)=>{
     await taskStore.deleteTask(id);
@@ -117,7 +116,7 @@ const taskIsArchived = async (bool,id)=>{
   await taskStore.archiveTask(bool,id)
   emit('edit')
   emit('undo')
-}
+} 
 const props = defineProps({
   taskName: String,
   taskDescription: String,

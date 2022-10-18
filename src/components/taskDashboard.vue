@@ -22,7 +22,7 @@ const emit = defineEmits([
   'edit','delete','done'
 ])
 const props = defineProps({
-    tasks:Object,
+  tasks:Object,
   filteredTasks:Array
     
 })
