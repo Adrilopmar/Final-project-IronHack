@@ -11,7 +11,7 @@
       <div v-else class="mb-5"> 
         <!-- <label for="task-name">New task name</label> -->
         <input id="inputName"
-        v-model="userTaskName"
+          v-model="userTaskName"
           type="text"
           name="task-name"
           class="appearance-none border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
@@ -87,10 +87,13 @@ const edit = ref(false);
 const userTaskName = ref('');
 const userTaskDescription = ref('');
 
+
 const editTask = () => {
   edit.value = !edit.value;
 };
 const updateTask = async (name, description, id) => {
+  if(name.length==0) name=props.taskName
+  if(description.length ==0) description=props.taskDescription
   await taskStore.editTask(name, description, id);
   emit("edit");
   editingTask()
@@ -125,6 +128,7 @@ const props = defineProps({
   taskArchived:Boolean
 });
 const emit = defineEmits(["edit","delete",'done','undo']);
+
 </script>
 
 <style scoped>
