@@ -65,7 +65,7 @@ const updateUser = async (e) => {
     editUser()
 };
 
-  getUser()
+  // getUser()
 
 </script>
 
