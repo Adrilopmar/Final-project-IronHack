@@ -157,10 +157,6 @@ const validateRegister = () => {
     showEmailError.value = true;
     error.value++;
   }
-  if (userName.value.length < 4) {
-    showNameError.value = true;
-    error.value++;
-  }
   if (password.value.length < 6) {
     showPassLengthError.value = true;
     error.value++;
