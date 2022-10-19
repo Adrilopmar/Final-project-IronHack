@@ -51,7 +51,7 @@ const editUser = () => {
   editing.value = !editing.value;
 };
 const getUser = async () => {
-
+debugger
    profile.value = await userStore.getProfile();
   //userName.value = user.value;
 };
@@ -66,7 +66,6 @@ const updateUser = async (e) => {
 };
 onMounted( ()=>{
   try{
-    debugger
      getUser()
   }
   catch(error){
