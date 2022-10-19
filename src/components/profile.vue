@@ -65,6 +65,7 @@ const updateUser = async (e) => {
     editUser()
 };
 onMounted( ()=>{
+  debugger
   try{
      getUser()
   }
