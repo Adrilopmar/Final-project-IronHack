@@ -10,7 +10,7 @@
     >
       <div class="mb-8">
         <div class="text-gray-900 font-bold mb-2 md:flex md:justify-between">
-          <div v-if="!editing">
+          <div v-if="!editing || !profile.username">
             <h3 v-if="profile.username" class="text-4xl">{{ profile.username }}</h3>
           </div>
           <form  v-if="editing || !profile.username" @submit.prevent="updateUser" class="md:flex md:justify-between w-full">
@@ -64,9 +64,9 @@ const updateUser = async (e) => {
     }
     editUser()
 };
-onMounted(async ()=>{
+onMounted( ()=>{
   try{
-     await getUser()
+     getUser()
   }
   catch(error){
     throw error
