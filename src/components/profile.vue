@@ -60,12 +60,18 @@ const updateUser = async (e) => {
   e.preventDefault()
   if(userName.value){
     await userStore.updateProfile(userName.value);
-    getUser()
+    await getUser()
     }
     editUser()
 };
-
-  // getUser()
+onMounted(async ()=>{
+  try{
+     await getUser()
+  }
+  catch(error){
+    throw error
+  }
+})
 
 </script>
 
