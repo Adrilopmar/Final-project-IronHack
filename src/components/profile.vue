@@ -51,7 +51,7 @@ const editUser = () => {
   editing.value = !editing.value;
 };
 const getUser = async () => {
-debugger
+
    profile.value = await userStore.getProfile();
   //userName.value = user.value;
 };
