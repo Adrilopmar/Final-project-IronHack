@@ -94,8 +94,6 @@ const taskAlredyCreated = ()=>{
   },1000)
   }
 
-
-
 const prop = defineProps({
     modalActive:Boolean
 })
